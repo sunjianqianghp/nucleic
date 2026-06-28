@@ -4,6 +4,7 @@ from app.settings import *
 
 
 engine = create_engine(f"mysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_DATABASE}") # 数据库引擎实例
+# engine = create_engine("mysql://root:123456@localhost/cat")
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine) # 数据库会话类
 Base = declarative_base() # 数据库模型基类 
 
