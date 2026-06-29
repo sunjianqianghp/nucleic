@@ -8,7 +8,7 @@ JWT_ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 1440  # JWT中Token有效期，24小时
 AUTH_SCHEMA = OAuth2PasswordBearer(tokenUrl="auth/login") # 依赖类实例，身份认证设置
 AUTH_INIT_USER = 'admin'
-AUTH_INIT_PASSWORD = '111111'
+AUTH_INIT_PASSWORD = '111'
 
 # 数据库配置
 DB_HOST = 'localhost'

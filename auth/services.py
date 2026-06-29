@@ -2,7 +2,7 @@ from fastapi import Depends, HTTPException, status
 from jose import JWTError
 from sqlalchemy import func
 from sqlalchemy.orm import Session 
-from app.database import SessionLocal, get_db, func
+from app.database import SessionLocal, get_db
 from app.settings import AUTH_SCHEMA, AUTH_INIT_USER, AUTH_INIT_PASSWORD
 from utils.password import get_password_hash, verify_password
 from utils.token import extract_token
@@ -22,7 +22,7 @@ def init_admin_user():
     if cnt == 0:
         user = UserInDB(  # 创建初始账号
             username=AUTH_INIT_USER,
-            get_password_hash=get_password_hash(AUTH_INIT_PASSWORD)
+            hashed_password=get_password_hash(AUTH_INIT_PASSWORD)
         )
         db.add(user)
         db.commit()

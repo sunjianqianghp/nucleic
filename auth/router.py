@@ -26,7 +26,6 @@ async def login(
     return {"access_token": access_token, "token_type": "bearer"} # 返回令牌
 
 
-# ?依赖中有AUTH_SCHEMA，说明已经登录了，既然已经登录了，为啥还要创建用户
 @route.post("/createuser", response_model=User, dependencies=[Depends(AUTH_SCHEMA)]) 
 async def createuser(user: UserCreate, db: Session = Depends(get_db)):
     dbuser = get_user(db, user.username)
@@ -37,6 +36,8 @@ async def createuser(user: UserCreate, db: Session = Depends(get_db)):
         )
     return create_user(db, user)
 
-
+@route.get("/userinfo", response_model=User)
+async def userinfo(user: User = Depends(get_current_usr)):
+    return user
 
 
